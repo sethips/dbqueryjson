@@ -48,7 +48,7 @@ function executeQuery(dbClient, stmt, params) {
 
 exports.handler = function(event, context, callback) {
   const queryStringParameters = event.queryStringParameters || {};
-  if (event.pathParameters.datasetname) {
+  if (event.pathParameters && event.pathParameters.datasetname) {
     const datasetname = event.pathParameters.datasetname;
     const parameterArray = [];
     for (let i = 1; i < 10; i++) {
@@ -82,7 +82,6 @@ exports.handler = function(event, context, callback) {
         .then(() => {
           client.end();
         });
-    // responseBody = ;
   } else {
     const responseBody = JSON.stringify(Object.getOwnPropertyNames(getStatements()));
     const response = {
