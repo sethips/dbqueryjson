@@ -1,0 +1,21 @@
+{
+  "name": "dbqueryjson",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "test-coverage": "istanbul cover _mocha",
+    "predeploy": "git log -1 --pretty=format:'{ \"date\":\"%cI\", \"commit\":\"%H\" }' > git-commit.json",
+    "deploy": "zip -r dbqueryjson.zip index.js git-commit.json node_modules && aws lambda update-function-code --function-name dbqueryjson --zip-file fileb://dbqueryjson.zip --publish"
+  },
+  "dependencies": {
+    "pg": "^6.1.2"
+  },
+  "license": "Copyright (C) DigitalSailors e.K. - All Rights Reserved, Unauthorized copying of this file, via any medium is strictly prohibited, Proprietary and confidential",
+  "author": {
+    "name": "DigitalSailors e.K.",
+    "email": "contact@digital-sailors.de",
+    "url": "https://www.digital-sailors.de"
+  }
+}
